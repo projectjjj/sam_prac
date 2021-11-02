@@ -1,0 +1,12 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "sam-meal"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-vy2p0cqra82j"
+s3_prefix = "sam-meal"
+region = "ap-northeast-2"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+disable_rollback = true
+image_repositories = []

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script>
+    let gUrl = "https://npd56o1d61.execute-api.ap-northeast-2.amazonaws.com/Prod/article";
+    function postingArticle() {
+        let url = $("#post-url").val();
+        let comment = $("#post-comment").val();
+        let idx = $("#post-idx").val();
+        console.log(url,comment,idx)
+        $.ajax({
+            type: "POST",
+            url: `${gUrl}?type=article`,
+            data: {idx: idx, title: url, content: comment},
+            success: function (response) {
+                if (response["result"] == "success") {
+                    alert("포스팅 업데이트 성공!");
+                    window.location.reload();
+                } else {
+                    alert("서버 오류!");
+                }
+            }
+        })
+    }
+  </script>
+</head>
+<body>
+<input id="post-url" type="text">
+<input id="post-comment" type="textarea">
+<input id="post-idx" class="form-control" placeholder="" hidden>
+<button onclick="postingArticle()">저장</button>
+</body>
+</html>
